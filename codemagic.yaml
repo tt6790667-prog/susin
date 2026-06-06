@@ -5,12 +5,12 @@ workflows:
   ios-release:
     name: iOS App Store Release
     max_build_duration: 60
-    instance_type: mac_mini_co # Uses Mac Mini instance in the cloud
+    instance_type: mac_mini_m2
     environment:
       groups:
-        - app-store-credentials # Optional: Configure matching API keys in Codemagic environment variables UI
+        - app-store-credentials
       vars:
-        APP_ID: 6470000000 # Replace with your Apple App ID after creating the app entry in App Store Connect
+        APP_ID: "6470000000"
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -20,18 +20,14 @@ workflows:
         - push
       branch_patterns:
         - pattern: main
-          target: main
+          include: true
+          source: true
 
     scripts:
       - name: Set up Apple API & Code Signing
         script: |
-          # Initializes the keychain on the cloud macOS machine
           keychain initialize
-          
-          # Downloads certificates and provisioning profiles automatically from App Store Connect API
           app-store-connect fetch-signing-files "com.susingroup.app" --type IOS_APP_STORE --create
-          
-          # Installs the downloaded credentials to the macOS keychain
           keychain add-certificates
 
       - name: Fetch Flutter dependencies
@@ -40,7 +36,6 @@ workflows:
 
       - name: Build iOS IPA Package
         script: |
-          # Compiles the app and signs it as an App Store distribution package
           flutter build ipa \
             --export-method app-store \
             --build-name=1.0.0 \
@@ -52,13 +47,11 @@ workflows:
     publishing:
       email:
         recipients:
-          - admin@susingroup.com # Replace with your email to receive build status updates
+          - admin@susingroup.com
         on_failure: true
         on_success: true
-      
-      # Automates uploading the built IPA straight to TestFlight
       app_store_connect:
-        auth: integration # Uses the App Store Connect integration set up in Codemagic dashboard
+        auth: integration
         submit_to_testflight: true
-        beta_testers_grps:
+        beta_groups:
           - Internal Testers
