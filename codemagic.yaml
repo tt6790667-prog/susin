@@ -1,16 +1,14 @@
-# codemagic.yaml
-# Configuration guide: https://docs.codemagic.io/yaml-basic/yaml-getting-started/
-
 workflows:
   ios-release:
     name: iOS App Store Release
     max_build_duration: 60
     instance_type: mac_mini_m2
+
     environment:
       groups:
         - app-store-credentials
       vars:
-        APP_ID: "6470000000"
+        BUNDLE_ID: "com.susingroup.app"
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -27,18 +25,24 @@ workflows:
       - name: Set up Apple API & Code Signing
         script: |
           keychain initialize
-          app-store-connect fetch-signing-files "com.susingroup.app" --type IOS_APP_STORE --create
+          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
           keychain add-certificates
 
-      - name: Fetch Flutter dependencies
+      - name: Install dependencies
         script: |
           flutter pub get
 
-      - name: Build iOS IPA Package
+      - name: Install CocoaPods
+        script: |
+          cd ios
+          pod install
+          cd ..
+
+      - name: Build IPA
         script: |
           flutter build ipa \
+            --release \
             --export-method app-store \
-            --build-name=1.0.0 \
             --build-number=$BUILD_NUMBER
 
     artifacts:
@@ -48,8 +52,10 @@ workflows:
       email:
         recipients:
           - admin@susingroup.com
-        on_failure: true
-        on_success: true
+        notify:
+          success: true
+          failure: true
+
       app_store_connect:
         auth: integration
         submit_to_testflight: true
