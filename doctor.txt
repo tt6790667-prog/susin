@@ -1,0 +1,43 @@
+﻿[!] Flutter (Channel stable, 3.44.1, on Microsoft Windows [Version 10.0.22631.6199], locale en-IN) [248ms]
+    ΓÇó Flutter version 3.44.1 on channel stable at C:\flutter
+    ! The flutter binary is not on your path. Consider adding C:\flutter\bin to your path.
+    ! The dart binary is not on your path. Consider adding C:\flutter\bin to your path.
+    ΓÇó Upstream repository https://github.com/flutter/flutter.git
+    ΓÇó Framework revision 924134a44c (7 days ago), 2026-05-29 12:13:22 -0400
+    ΓÇó Engine revision c416acfeb8
+    ΓÇó Dart version 3.12.1
+    ΓÇó DevTools version 2.57.0
+    ΓÇó Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios, cli-animations, enable-native-assets, enable-swift-package-manager, omit-legacy-version-file, enable-lldb-debugging, enable-uiscene-migration
+    ΓÇó If those were intentional, you can disregard the above warnings; however it is recommended to use "git" directly to perform update checks and upgrades.
+
+[ΓêÜ] Windows Version (11 Pro 64-bit, 23H2, 2009) [2.2s]
+
+[!] Android toolchain - develop for Android devices (Android SDK version 36.1.0) [363ms]
+    ΓÇó Android SDK at C:\Users\T.DINESH\AppData\Local\Android\sdk
+    ΓÇó Emulator version 36.5.11.0 (build_id 15261927) (CL:N/A)
+    X cmdline-tools component is missing.
+      Try installing or updating Android Studio.
+      Alternatively, download the tools from https://developer.android.com/studio#command-line-tools-only and make sure to set the ANDROID_HOME environment variable.
+      See https://developer.android.com/studio/command-line for more details.
+    X Android license status unknown.
+      Run `flutter doctor --android-licenses` to accept the SDK licenses.
+      See https://flutter.dev/to/windows-android-setup for more details.
+
+[ΓêÜ] Chrome - develop for the web [17ms]
+    ΓÇó Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[X] Visual Studio - develop Windows apps [16ms]
+    X Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+
+[ΓêÜ] Connected device (3 available) [398ms]
+    ΓÇó Windows (desktop) ΓÇó windows ΓÇó windows-x64    ΓÇó Microsoft Windows [Version 10.0.22631.6199]
+    ΓÇó Chrome (web)      ΓÇó chrome  ΓÇó web-javascript ΓÇó Google Chrome 149.0.7827.53
+    ΓÇó Edge (web)        ΓÇó edge    ΓÇó web-javascript ΓÇó Microsoft Edge 148.0.3967.96
+    ! Device emulator-5558 is offline.
+
+[ΓêÜ] Network resources [709ms]
+    ΓÇó All expected network resources are available.
+
+! Doctor found issues in 3 categories.

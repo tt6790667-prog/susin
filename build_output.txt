@@ -1,0 +1,50 @@
+﻿Running Gradle task 'bundleRelease'...                          
+cmd : 
+At C:\Users\T.DINESH\AppData\Local\Temp\ps-script-ec887446-6336-43c8-9216-d3abb8d0fd3a.ps1:100 char:1
++ cmd /c "cd /d c:\Users\T.DINESH\Desktop\APP && C:\flutter\bin\flutter ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+FAILURE: Build completed with 2 failures.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':gradle:compileKotlin'.
+> Could not resolve all files for configuration ':gradle:detachedConfiguration1'.
+   > Failed to transform gradle-api-8.14.jar to match attributes {artifactType=classpath-entry-snapshot, 
+org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
+      > Execution failed for BuildToolsApiClasspathEntrySnapshotTransform: C:\Users\T.DINESH\AppData\Local\Temp\cursor-
+sandbox-cache\ace89cb95c87030fe6e6f0e313d16978\gradle\caches\8.14\generated-gradle-jars\gradle-api-8.14.jar.
+         > There is not enough space on the disk
+   > Failed to transform kotlinx-serialization-core-jvm-1.4.0.jar to match attributes 
+{artifactType=classpath-entry-snapshot, org.gradle.libraryelements=jar, org.gradle.usage=java-runtime}.
+      > Execution failed for BuildToolsApiClasspathEntrySnapshotTransform: C:\Users\T.DINESH\AppData\Local\Temp\cursor-
+sandbox-cache\ace89cb95c87030fe6e6f0e313d16978\gradle\caches\modules-2\files-2.1\org.jetbrains.kotlinx\kotlinx-serializ
+ation-core-jvm\1.4.0\9b00d574374ae0201a505ab54c7744586866dc27\kotlinx-serialization-core-jvm-1.4.0.jar.
+         > There is not enough space on the disk
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+java.io.IOException: There is not enough space on the disk
+> There is not enough space on the disk
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+BUILD FAILED in 3m 25s
+Running Gradle task 'bundleRelease'...                            206.4s
+Gradle task bundleRelease failed with exit code 1

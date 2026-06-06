@@ -1,0 +1,33 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Pass Authorization header to PHP APIs
+  RewriteCond %{HTTP:Authorization} ^(.+)$
+  RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+  # Do NOT rewrite Flutter/static assets (fixes "Unexpected token '<'" on .js files)
+  RewriteCond %{REQUEST_URI} \.(js|mjs|css|png|jpe?g|gif|ico|json|wasm|bin|ttf|otf|woff2?|map)$ [NC,OR]
+  RewriteCond %{REQUEST_URI} ^/assets/ [NC,OR]
+  RewriteCond %{REQUEST_URI} ^/canvaskit/ [NC,OR]
+  RewriteCond %{REQUEST_URI} ^/icons/ [NC,OR]
+  RewriteCond %{REQUEST_URI} ^/support-api/ [NC]
+  RewriteRule ^ - [L]
+
+  # Existing files and folders
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, DELETE, PUT, PATCH"
+  Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires 0
+</IfModule>
